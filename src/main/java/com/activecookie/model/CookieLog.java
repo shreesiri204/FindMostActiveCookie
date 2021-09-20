@@ -6,7 +6,7 @@ public class CookieLog {
 	
     private String cookie;
 
-    private ZonedDateTime timestamp;
+	private ZonedDateTime timestamp;
     
 
     public CookieLog(String cookie, String time) {
