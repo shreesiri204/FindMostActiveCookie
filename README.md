@@ -22,7 +22,7 @@ From the cloned directory path, build the project using the commands below. The 
 3. gradle fatJar
 
 # Executable Jar 
-Built and Executable Jar is also available at- https://github.com/shreesiri204/FindMostActiveCookie 
+Built and Executable Jar is also available at- https://github.com/shreesiri204/FindMostActiveCookie/tree/main/Executable%20Jar
 
 # Problem Statement
 Write a command line program in your preferred language to process the log file and return the most active cookie for a specific day. Please include a -f parameter for the filename to process and a -d parameter to specify the date.
