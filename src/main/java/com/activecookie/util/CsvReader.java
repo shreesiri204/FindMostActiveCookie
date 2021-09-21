@@ -12,14 +12,20 @@ import com.activecookie.model.CookieLog;
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
 
+/**
+ * @author kshree
+ *
+ */
 public class CsvReader {
 
 	private static final String SEPARATOR = ",";
 
 	/**
+	 * This method is used to read sorted CSV content for given input date. also,
+	 * method reads the data only till given date
 	 * 
 	 * @param inputArgs
-	 * @return
+	 * @return List<CookieLog>, CookieLog object list for given input date
 	 * @throws ServiceException
 	 */
 	public static List<CookieLog> readCSVForInputDate(String fileName, String date) throws ServiceException {
