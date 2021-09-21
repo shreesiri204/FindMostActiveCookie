@@ -11,9 +11,8 @@ import static java.util.stream.Collectors.groupingBy;
 
 import static com.activecookie.util.CsvReader.readCSVForInputDate;
 
-public class CookieService implements ICookieService {
+public class CookieService {
 
-	@Override
 	public void process(String fileName, String date) throws ServiceException {
 		List<CookieLog> cookieLogs = readCSVForInputDate(fileName, date);
 		final Map<String, Long> groupByCookie = groupCookieForInputDate(LocalDate.parse(date), cookieLogs);
