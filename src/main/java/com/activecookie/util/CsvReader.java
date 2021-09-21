@@ -10,6 +10,7 @@ import java.util.stream.Collectors;
 import com.activecookie.exception.ServiceException;
 import com.activecookie.model.CookieLog;
 import java.time.LocalDate;
+import java.time.format.DateTimeParseException;
 
 public class CsvReader {
 
@@ -34,9 +35,13 @@ public class CsvReader {
 
 			} catch (IOException e) {
 				throw new ServiceException(e.getMessage());
+			} catch (DateTimeParseException e) {
+				throw new ServiceException("Invalid date format- " + e.getMessage());
+			} catch (Exception e) {
+				throw new ServiceException(e.getMessage());
 			}
 		} else {
-			throw new ServiceException("File not Found");
+			throw new ServiceException("File not Found- " + fileName);
 		}
 	}
 

@@ -2,18 +2,32 @@ package com.activecookie.util;
 
 import com.beust.jcommander.JCommander;
 import com.beust.jcommander.Parameter;
+import com.beust.jcommander.ParameterException;
 
 public class CLIParser {
 
-	@Parameter(names = { "--fileName", "-f" }, description = "CSV File name")
+	@Parameter(names = { "--fileName", "-f" }, required = true, description = "CSV File name")
 	static String fileName;
 
-	@Parameter(names = { "--date", "-d" }, description = "Date in UTC timeZone")
+	@Parameter(names = { "--date", "-d" }, required = true, description = "Date in UTC timeZone")
 	static String date;
 
+	@Parameter(names = "--help", help = true)
+	private boolean help;
+
 	public static void parseInput(String[] args) {
-		CLIParser inputArgumnets = new CLIParser();
-		JCommander.newBuilder().addObject(inputArgumnets).build().parse(args);
+		CLIParser inputArguments = new CLIParser();
+		JCommander jct = JCommander.newBuilder().addObject(inputArguments).build();
+		try {
+			jct.parse(args);
+		} catch (ParameterException e) {
+			jct.usage();
+			System.exit(0);
+		}
+		if (inputArguments.help) {
+			jct.usage();
+			System.exit(0);
+		}
 
 	}
 

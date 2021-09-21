@@ -44,7 +44,7 @@ class CookieServiceTest {
 	@Test
 	public void execute_whenGivenArgumentDateNotPresent_thenReturnsEmpty() throws ServiceException {
 		cookieService.process("src/test/resources/cookieLog.csv", "2018-12-10");
-		assertThat(outputStreamCaptor.toString().trim()).isEmpty();
+		assertThat(outputStreamCaptor.toString().trim()).contains("Cookie(s) not Found for given date-2018-12-10");
 	}
 
 	@Test

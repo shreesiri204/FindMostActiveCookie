@@ -15,9 +15,13 @@ public class CookieService {
 
 	public void process(String fileName, String date) throws ServiceException {
 		List<CookieLog> cookieLogs = readCSVForInputDate(fileName, date);
-		final Map<String, Long> groupByCookie = groupCookieForInputDate(LocalDate.parse(date), cookieLogs);
-		final OptionalLong maxActiveCookieSize = getMaxActiveCookieSize(groupByCookie);
-		maxActiveCookieSize.ifPresent(size -> printMostActiveCookies(groupByCookie, size));
+		if (cookieLogs.size() != 0) {
+			final Map<String, Long> groupByCookie = groupCookieForInputDate(LocalDate.parse(date), cookieLogs);
+			final OptionalLong maxActiveCookieSize = getMaxActiveCookieSize(groupByCookie);
+			maxActiveCookieSize.ifPresent(size -> printMostActiveCookies(groupByCookie, size));
+		} else {
+			System.out.println("Cookie(s) not Found for given date-" + date);
+		}
 	}
 
 	private Map<String, Long> groupCookieForInputDate(LocalDate inputDate, List<CookieLog> cookieLogs) {
